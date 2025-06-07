@@ -46,16 +46,28 @@ const logout = async () => {
 }
 
 const computedMenuItems = computed(() => {
-  const items = [...baseMenuItems.value]
+  const items = [...baseMenuItems.value]; // Start with base items
   if (authStore.user) {
     items.push({
       label: 'Sair',
       icon: 'pi pi-sign-out',
       command: logout
-    })
+    });
+  } else {
+    // If user is not logged in, add Login and Register
+    items.push({
+      label: 'Login',
+      icon: 'pi pi-sign-in',
+      command: () => router.push({ name: 'login' })
+    });
+    items.push({
+      label: 'Register',
+      icon: 'pi pi-user-plus',
+      command: () => router.push({ name: 'register' })
+    });
   }
-  return items
-})
+  return items;
+});
 </script>
 
 <template>

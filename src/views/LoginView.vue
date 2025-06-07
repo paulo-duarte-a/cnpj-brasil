@@ -18,6 +18,7 @@
         </FormField>
         <Button type="submit" :disabled="isLoading" label="Login" icon="pi pi-user" iconPos="right" />
         <Message v-if="error" severity="error" variant="outlined">{{ error }}</Message>
+        <Button label="Don't have an account? Register here" link @click="navigateToRegister" class="p-mt-2" />
       </Form>
     </div>
   </div>
@@ -82,4 +83,8 @@ const handleLogin = async (e: { valid: unknown }) => {
     }
   }
 }
+
+const navigateToRegister = () => {
+  router.push({ name: 'register' });
+};
 </script>
