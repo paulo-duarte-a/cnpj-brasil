@@ -3,14 +3,15 @@
     <div class="">
       <Form :resolver @submit="handleLogin" class="">
         <FormField v-slot="$field" as="section" name="username" initialValue="{{ credentials.email }}" class="">
-          <InputText v-model="credentials.email" type="text" placeholder="Username" />
+          <InputText v-model="credentials.email" type="text" placeholder="Username" fluid />
           <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">
             {{ $field.error?.message }}
           </Message>
         </FormField>
         <FormField v-slot="$field" asChild name="password" initialValue="{{ credentials.senha }}">
           <section class="">
-            <Password v-model="credentials.senha" type="text" placeholder="Password" :feedback="false" toggleMask />
+            <Password v-model="credentials.senha" type="text" placeholder="Password" :feedback="false" toggleMask
+              fluid />
             <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">
               {{ $field.error?.message }}
             </Message>
@@ -18,6 +19,8 @@
         </FormField>
         <Button type="submit" :disabled="isLoading" label="Login" icon="pi pi-user" iconPos="right" />
         <Message v-if="error" severity="error" variant="outlined">{{ error }}</Message>
+        <Button label="Não possui uma conta? Registre-se" icon="pi pi-user-plus" link @click="navigateToRegister"
+          class="p-mt-2" />
       </Form>
     </div>
   </div>
@@ -82,4 +85,8 @@ const handleLogin = async (e: { valid: unknown }) => {
     }
   }
 }
+
+const navigateToRegister = () => {
+  router.push({ name: 'register' });
+};
 </script>

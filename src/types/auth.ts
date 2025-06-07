@@ -1,6 +1,12 @@
 export interface User {
   email: string
-  role: string
+  role: string[]
+}
+
+export interface AuthState {
+  user: User | null
+  isLoading: boolean
+  initialized: boolean
 }
 
 export interface LoginCredentials {
@@ -8,8 +14,7 @@ export interface LoginCredentials {
   senha: string
 }
 
-export interface AuthState {
-  user: User | null
-  isLoading: boolean
-  initialized: boolean
+export interface RegisterCredentials {
+  email: string
+  senha: string
 }
