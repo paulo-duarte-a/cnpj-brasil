@@ -12,10 +12,10 @@ FROM node:22-alpine
 
 WORKDIR /app
 
-COPY --from=builder /app /app
+RUN npm install -g serve pm2
 
-RUN npm install pm2 -g
+COPY --from=builder /app /app
 
 EXPOSE 80
 
-CMD ["pm2-runtime", "npm", "--", "start"]
+CMD ["pm2-runtime", "serve", "dist", "--port", "80", "--single"]
