@@ -28,3 +28,8 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# Docker
+.dockerignore
+**/docker-compose.yml
+**/Dockerfile
