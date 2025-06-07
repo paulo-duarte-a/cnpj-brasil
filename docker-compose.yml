@@ -3,5 +3,5 @@ services:
     build: .
     container_name: vue_app
     ports:
-      - "8520:80"
+      - '8520:3000'
     restart: always

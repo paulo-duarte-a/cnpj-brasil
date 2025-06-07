@@ -14,8 +14,6 @@ WORKDIR /app
 
 RUN npm install -g serve pm2
 
-COPY --from=builder /app /app
+COPY --from=builder /app/dist /app
 
-EXPOSE 80
-
-CMD ["pm2-runtime", "serve", "dist", "--port", "80", "--single"]
+CMD ["pm2-runtime", "serve", ".", "--port", "3000"]
